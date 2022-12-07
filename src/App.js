@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect, NavLink } from "react-router-dom";
 
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
@@ -6,8 +6,8 @@ import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
   /* define state variables for contacts and appointments */
-  const [contacts, setContacts] = React.useState([]);
-  const [appointments, setAppointments] = React.useState([]);
+  const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   const ROUTES = {
     CONTACTS: "/contacts",
