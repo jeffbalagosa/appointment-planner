@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ContractForm, {
-  ContactForm,
-} from "../../components/contactForm/ContactForm";
-import TileList from "../../components/tileList/TileList";
+import { ContactForm } from "../../components/contactForm/ContactForm";
+import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = ({ contacts, addContact }) => {
+export const ContactsPage = (props) => {
   /*
   Define state variables for 
   contact info and duplicate check
@@ -21,7 +19,7 @@ export const ContactsPage = ({ contacts, addContact }) => {
     if the contact name is not a duplicate
     */
     if (!duplicate) {
-      addContact(name, phone, email);
+      props.addContact(name, phone, email);
       setName("");
       setPhone("");
       setEmail("");
@@ -30,11 +28,11 @@ export const ContactsPage = ({ contacts, addContact }) => {
 
   useEffect(() => {
     const checkDuplicate = () => {
-      const duplicate = contacts.find((contact) => contact.name === name);
+      const duplicate = props.contacts.find((contact) => contact.name === name);
       setDuplicate(duplicate);
     };
     checkDuplicate();
-  }, [name, contacts]);
+  }, [name]);
 
   /*
   Using hooks, check for contact name in the 
@@ -58,6 +56,7 @@ export const ContactsPage = ({ contacts, addContact }) => {
       <hr />
       <section>
         <h2>Contacts</h2>
+        <TileList list={props.contacts} />
       </section>
     </div>
   );
