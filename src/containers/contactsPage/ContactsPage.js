@@ -12,11 +12,6 @@ export const ContactsPage = ({ contacts, addContact }) => {
   const [email, setEmail] = useState("");
   const [duplicate, setDuplicate] = useState(false);
 
-  useEffect(() => {
-    const isDuplicate = contacts.some((contact) => contact.name === name);
-    setDuplicate(isDuplicate);
-  }, [name, contacts]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     /*
@@ -31,6 +26,14 @@ export const ContactsPage = ({ contacts, addContact }) => {
     }
   };
 
+  useEffect(() => {
+    const checkDuplicate = () => {
+      const duplicate = contacts.find((contact) => contact.name === name);
+      setDuplicate(duplicate);
+    };
+    checkDuplicate();
+  }, [name, contacts]);
+
   /*
   Using hooks, check for contact name in the 
   contacts array variable in props
@@ -39,7 +42,7 @@ export const ContactsPage = ({ contacts, addContact }) => {
   return (
     <div>
       <section>
-        <h2>Add Contact</h2>
+        <h2 handleSubmit={handleSubmit}>Add Contact</h2>
       </section>
       <hr />
       <section>
