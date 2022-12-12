@@ -1,4 +1,5 @@
 import React from "react";
+import ContactPicker from "../contactPicker/ContactPicker";
 
 export const AppointmentForm = ({
   contacts,
@@ -10,7 +11,7 @@ export const AppointmentForm = ({
   setDate,
   time,
   setTime,
-  handleSubmit
+  handleSubmit,
 }) => {
   const getTodayString = () => {
     const [month, day, year] = new Date()
@@ -19,7 +20,5 @@ export const AppointmentForm = ({
     return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
   };
 
-  return (
-    AppointmentForm
-  );
+  return AppointmentForm;
 };
