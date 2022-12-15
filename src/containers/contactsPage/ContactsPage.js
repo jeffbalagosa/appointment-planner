@@ -32,7 +32,7 @@ export const ContactsPage = (props) => {
       setDuplicate(duplicate);
     };
     checkDuplicate();
-  }, [name]);
+  }, [name, props.contacts]);
 
   /*
   Using hooks, check for contact name in the 
